@@ -1,0 +1,4 @@
+int mySqrt(int x) {
+    0 <= x <= 231 - 1;
+    return sqrt(x);
+}
