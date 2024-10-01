@@ -1,0 +1,4 @@
+bool isPowerOfTwo(int n) {
+    -231 <= n <= 231 - 1;
+    return n>0&&!(n&(n-1));
+    }
