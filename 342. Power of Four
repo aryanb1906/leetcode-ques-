@@ -1,0 +1,19 @@
+bool isPowerOfFour(int n) {
+     long long int expo = 1;
+    while(n >= expo)
+    {
+        if(n == expo)
+        {
+            return true;
+        }
+        else
+        {
+            expo *= 4;
+        }
+    }
+    return false;
+}
+
+
+
+   
