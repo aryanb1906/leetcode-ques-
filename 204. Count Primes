@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int countPrimes(int n) {
+    vector <bool> ar(n+1,true);
+       ar[0]=ar[1]=false;
+       for(int i=2;i<=sqrt(n);i++)
+       {
+           if(ar[i]==true)
+           {
+               for (int j=i*i;j<=n;j=j+i)
+               {
+                   ar[j]=false;
+               }
+           }
+       }
+       int c=0;
+       for(int i=2;i<n;i++)
+       {
+           if(ar[i]==true)
+           c++;
+       }
+       return c;      
+    }
+};
