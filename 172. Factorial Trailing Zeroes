@@ -1,0 +1,10 @@
+int trailingZeroes(int n) {
+    int t = n;
+    int counter = 0;
+    while(t != 0)
+    {
+        t = t / 5;
+        counter = counter + t;
+    }
+    return counter;
+}
