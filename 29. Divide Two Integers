@@ -1,0 +1,4 @@
+int divide(int dividend, int divisor) {
+     long long int  s =  dividend / divisor;
+    return s ;
+}
