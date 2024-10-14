@@ -1,4 +1,7 @@
-int divide(int dividend, int divisor) {
-     long long int  s =  dividend / divisor;
-    return s ;
-}
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        if (dividend/divisor >= pow(2,31)-1):
+            return pow(2,31)-1
+        if(dividend/divisor <= -pow(2,31)):
+            return -pow(2,31)
+        return int(dividend/divisor)
