@@ -1,3 +1,5 @@
+# also hasing a way to do it with cpp lanuage 
+
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         if (dividend/divisor >= pow(2,31)-1):
