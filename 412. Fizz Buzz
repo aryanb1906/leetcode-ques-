@@ -1,3 +1,5 @@
+#there also othere3 approch 
+
 class Solution {
 public:
     vector<string> fizzBuzz(int n)
