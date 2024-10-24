@@ -8,3 +8,5 @@ int trailingZeroes(int n) {
     }
     return counter;
 }
+
+#can be done by function 
