@@ -1,0 +1,6 @@
+import pandas as pd
+
+def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    # Double the salary of each employee
+    employees['salary'] = employees['salary'].apply(lambda x: x * 2)
+    return employees
