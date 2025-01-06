@@ -1,0 +1,17 @@
+# Write your MySQL query statement below
+SELECT
+    id,
+    MAX(CASE WHEN month = 'Jan' THEN revenue else null END) AS Jan_Revenue,
+    MAX(CASE WHEN month = 'Feb' THEN revenue else null END) AS Feb_Revenue,
+    MAX(CASE WHEN month = 'Mar' THEN revenue else null  END) AS Mar_Revenue,
+    MAX(CASE WHEN month = 'Apr' THEN revenue else null  END) AS Apr_Revenue,
+    MAX(CASE WHEN month = 'May' THEN revenue  else null END) AS May_Revenue,
+    MAX(CASE WHEN month = 'Jun' THEN revenue else null END) AS Jun_Revenue,
+    MAX(CASE WHEN month = 'Jul' THEN revenue else null END) AS Jul_Revenue,
+    MAX(CASE WHEN month = 'Aug' THEN revenue else null END) AS Aug_Revenue,
+    MAX(CASE WHEN month = 'Sep' THEN revenue else null  END) AS Sep_Revenue,
+    MAX(CASE WHEN month = 'Oct' THEN revenue  else null END) AS Oct_Revenue,
+    MAX(CASE WHEN month = 'Nov' THEN revenue else null END) AS Nov_Revenue,
+    MAX(CASE WHEN month = 'Dec' THEN revenue else null END) AS Dec_Revenue
+FROM Department
+GROUP BY id;
