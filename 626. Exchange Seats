@@ -1,0 +1,9 @@
+SELECT s1.id,
+    CASE 
+        WHEN s1.id % 2 = 0 THEN (SELECT student FROM seat WHERE id = s1.id - 1)
+         WHEN s1.id % 2 != 0 AND EXISTS (SELECT 1 FROM seat WHERE id = s1.id + 1) THEN 
+            (SELECT student FROM seat WHERE id = s1.id + 1)
+        ELSE s1.student
+    END AS student
+FROM seat s1
+ORDER BY s1.id;
