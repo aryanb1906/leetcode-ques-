@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        int maxcount = 0, mincount = 0;
+        
+        for(int i = 0; i < nums.size(); i++) { // Iterate through the array
+            if(nums[i] > 0) {
+                maxcount++;
+            }
+            else if (nums[i] < 0) {
+                mincount++;
+            }
+        }
+        
+        return max(maxcount, mincount); // Return the maximum count
+    }
+};
