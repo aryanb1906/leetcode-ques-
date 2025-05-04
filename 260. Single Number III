@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        map<int, int> mpp;
+        for (int num : nums) {
+            mpp[num]++;
+        }
+
+        vector<int> result;
+        for (auto it : mpp) {
+            if (it.second == 1) {
+                result.push_back(it.first);
+            }
+        }
+
+        return result; 
+    }
+};
