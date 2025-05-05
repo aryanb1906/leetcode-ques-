@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int rearrangeCharacters(string s, string targetStr) {
+        map<char, int> mpp;
+        map<char, int> target;
+
+        for (int i = 0; i < s.size(); i++) {
+            mpp[s[i]]++;
+        }
+
+        for (int i = 0; i < targetStr.size(); i++) {
+            target[targetStr[i]]++;
+        }
+
+        int minCopies = INT_MAX;
+        for (auto it : target) {
+            char ch = it.first;
+            int need = it.second;
+
+            if (mpp[ch] == 0) return 0;
+            minCopies = min(minCopies, mpp[ch] / need);
+        }
+
+        return minCopies;
+    }
+};
