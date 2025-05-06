@@ -1,16 +1,15 @@
-# can also be done pyhton 3
-
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int maxprofit=0, best_buy=prices[0];
+        int maxP = 0;                 
+        int minBuy = prices[0];         
 
-        for(int i=1;i<prices.size();i++){
-            if(prices[i]> best_buy){
-                maxprofit=max( maxprofit,prices[i]-best_buy);
-            }
-            best_buy=min(best_buy,prices[i]);
+        for (int i = 0; i < prices.size(); i++) {
+            int sell = prices[i];     
+            maxP = max(maxP, sell - minBuy);  
+            minBuy = min(minBuy, sell);      
         }
-        return maxprofit;
+
+        return maxP;
     }
 };
