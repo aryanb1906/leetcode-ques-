@@ -1,0 +1,20 @@
+class MyHashMap {
+public:
+    MyHashMap() {
+        
+    }
+    map<int,int>cnt;
+    void put(int key, int value) {
+        cnt[key]=value+1;
+    }
+    
+    int get(int key) {
+        if(cnt[key]==0) return -1;
+        return cnt[key]-1;
+    }
+    
+    void remove(int key) {
+        cnt[key]=0;
+    }
+};
+
