@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minMaxDifference(int num) {
+        string s = to_string(num);
+        int maxi = num, mini = num;
+
+        for (char d = '0'; d <= '9'; d++) {
+            for (char r = '0'; r <= '9'; r++) {
+                string temp = s;
+                for (char &ch : temp) {
+                    if (ch == d) ch = r;
+                }
+                int val = stoi(temp);
+                maxi = max(maxi, val);
+                mini = min(mini, val);
+            }
+        }
+        return maxi - mini;
+    }
+};
