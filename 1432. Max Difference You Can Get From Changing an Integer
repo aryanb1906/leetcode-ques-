@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int maxDiff(int num) {
+        string s = to_string(num);
+        string maxNum = s;
+        string minNum = s;
+
+        char changeMax = 0;
+        for (char c : s) {
+            if (c != '9') {
+                changeMax = c;
+                break;
+            }
+        }
+        if (changeMax) {
+            for (char &c : maxNum) {
+                if (c == changeMax) c = '9';
+            }
+        }
+
+        // For min:
+        char changeMin = 0;
+        if (s[0] != '1') {
+            changeMin = s[0];
+            for (char &c : minNum) {
+                if (c == changeMin) c = '1';
+            }
+        } else {
+            for (int i = 1; i < s.size(); i++) {
+                if (s[i] != '0' && s[i] != '1') {
+                    changeMin = s[i];
+                    break;
+                }
+            }
+            for (int i = 1; i < minNum.size(); i++) {
+                if (minNum[i] == changeMin)
+                    minNum[i] = '0';
+            }
+        }
+
+        int a = stoi(maxNum);
+        int b = stoi(minNum);
+        return a - b;
+    }
+};
