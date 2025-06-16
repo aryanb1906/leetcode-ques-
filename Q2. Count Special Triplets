@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int specialTriplets(vector<int>& nums) {
+        const int MOD = 1e9 + 7;
+        int n = nums.size();
+        unordered_map<int, int> leftFreq, rightFreq;
+        long long count = 0;
+
+        for (int num : nums) {
+            rightFreq[num]++;
+        }
+
+        for (int j = 0; j < n; ++j) {
+            rightFreq[nums[j]]--;  
+
+            int target = 2 * nums[j];
+            int left = leftFreq[target];
+            int right = rightFreq[target];
+
+            count = (count + 1LL * left * right) % MOD;
+
+            leftFreq[nums[j]]++;  
+        }
+
+        return count;
+    }
+};
+©leetcode
