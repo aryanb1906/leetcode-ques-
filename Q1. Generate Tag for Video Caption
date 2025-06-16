@@ -1,0 +1,20 @@
+class Solution(object):
+    def generateTag(self, caption):
+        """
+        :type caption: str
+        :rtype: str
+        """
+        words = caption.split()
+        result = "#"
+        
+        for i, word in enumerate(words):
+            clean_word = ''.join(c for c in word if c.isalpha())
+            if not clean_word:
+                continue
+            if i == 0:
+                result += clean_word.lower()
+            else:
+                result += clean_word.capitalize()
+        
+        return result[:100]  
+©leetcode
