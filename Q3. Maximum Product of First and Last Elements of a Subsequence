@@ -1,0 +1,28 @@
+class Solution {
+public:
+    long long maximumProduct(vector<int>& nums, int m) {
+        long long ans = LLONG_MIN;
+
+        if (m == 1) {
+            for (int i = 0; i < nums.size(); i++) {
+                long long x = nums[i];
+                ans = max(ans, x * x);
+            }
+            return ans;
+        }
+
+        int n = nums.size();
+        set<int> valid;
+
+        for (int i = m - 1; i < n; i++) {
+            valid.insert(nums[i - (m - 1)]);
+            int mn = *valid.begin();
+            int mx = *valid.rbegin();
+            ans = max(ans, (long long)nums[i] * mn);
+            ans = max(ans, (long long)nums[i] * mx);
+        }
+
+        return ans;
+    }
+};
+©leetcode
