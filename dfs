@@ -24,6 +24,7 @@ public:
 <------------------------------------------------->
 
 /// to convert adj matrix into list 
+  int v = matrix.size();
    vector<vector<int>> adj(v);
 
         for (int i = 0; i < v; i++) {
