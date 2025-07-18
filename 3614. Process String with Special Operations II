@@ -1,0 +1,48 @@
+class Solution {
+public:
+    char processStr(string s, long long k) {
+        int n = s.size();
+        vector<long long> len(n + 1);
+        long long currLen = 0;//track of result length 
+
+
+    // If it’s a letter → increase result length
+    // If it’s * → remove last char → decrease result length
+    // If it’s # → duplicate the whole string → double the length
+        for (int i = 0; i < n; i++) {
+            len[i] = currLen;
+            char c = s[i];
+            if (islower(c)) {
+                currLen += 1;
+            } else if (c == '*') {
+                if (currLen > 0) currLen -= 1;
+            } else if (c == '#') {
+                currLen *= 2;
+            }
+        }
+        len[n] = currLen;
+
+        if (k >= currLen) return '.'; // If k is beyond the final string length → return '.'
+
+        for (int i = n - 1; i >= 0; i--) {
+            char c = s[i];
+            long long prevLen = len[i];
+
+            if (c == '%') {
+                k = len[i + 1] - 1 - k;
+            } else if (c == '#') {
+                if (k >= prevLen) {
+                    k -= prevLen;
+                }
+            } else if (c == '*') {
+                if (len[i + 1] > prevLen) {
+                    if (k == len[i + 1] - 1) return '.';
+                }
+            } else {
+                if (k == len[i + 1] - 1) return c;
+            }
+        }
+
+        return '.';
+    }
+};
