@@ -1,0 +1,28 @@
+vector<int> dijkstra(int V, vector<vector<int>>& edges, int source) {
+    // Build adjacency list
+    unordered_map<int, vector<pair<int, int>>> adj;
+    for (auto& edge : edges) {
+        int u = edge[0], v = edge[1], w = edge[2];
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w}); // skip for directed graph
+    }
+
+    vector<int> dist(V, INT_MAX);
+    dist[source] = 0;
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    pq.push({0, source});
+
+    while (!pq.empty()) {
+        auto [currDist, node] = pq.top(); pq.pop();
+
+        for (auto& [neighbor, weight] : adj[node]) {
+            if (currDist + weight < dist[neighbor]) {
+                dist[neighbor] = currDist + weight;
+                pq.push({dist[neighbor], neighbor});
+            }
+        }
+    }
+
+    return dist;
+}
