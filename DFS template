@@ -1,0 +1,33 @@
+void dfs(int node, unordered_map<int, vector<int>>& adj, vector<bool>& visited, vector<int>& result) {
+    visited[node] = true;
+    result.push_back(node);
+
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, adj, visited, result);
+        }
+    }
+}
+
+vector<int> dfsTraversal(int n, vector<vector<int>>& edges) {
+    unordered_map<int, vector<int>> adj;
+
+    // Step 1: Build adjacency list
+    for (auto& edge : edges) {
+        int u = edge[0], v = edge[1];
+        adj[u].push_back(v);
+        adj[v].push_back(u); // Skip if directed
+    }
+
+    vector<bool> visited(n, false);
+    vector<int> result;
+
+    // Step 2: Handle disconnected components
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            dfs(i, adj, visited, result);
+        }
+    }
+
+    return result;
+}
