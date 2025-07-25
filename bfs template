@@ -1,0 +1,36 @@
+vector<int> bfsTraversal(int n, vector<vector<int>>& edges) {
+    // Step 1: Create adjacency list
+    unordered_map<int, vector<int>> adj;
+    for(auto& edge : edges){
+        int u = edge[0], v = edge[1];
+        adj[u].push_back(v);
+        adj[v].push_back(u); // skip this line if graph is directed
+    }
+
+    // Step 2: Prepare visited map and result
+    vector<bool> visited(n, false);
+    vector<int> result;
+
+    // Step 3: Traverse all components
+    for(int i = 0; i < n; ++i){
+        if(!visited[i]){
+            queue<int> q;
+            q.push(i);
+            visited[i] = true;
+
+            while(!q.empty()){
+                int curr = q.front(); q.pop();
+                result.push_back(curr);
+
+                for(int neighbor : adj[curr]){
+                    if(!visited[neighbor]){
+                        visited[neighbor] = true;
+                        q.push(neighbor);
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
+}
